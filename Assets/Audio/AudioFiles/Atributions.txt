@@ -1,0 +1,292 @@
+Unity Package by Kenny Salazar
+
+Programming, Art, Animation, UI, UX & FX by Kenny Salazar
+
+Audio files by:
+
+CJDeets
+GunShots,Scifi » Shot,scifi,powerdown.wav by CJDeets of freesound.org
+https://freesound.org/people/CJDeets/sounds/476740/
+https://freesound.org/people/CJDeets/
+
+JavierZumer
+Familiar Game Jam Sounds » fire shot.wav by JavierZumer of freesound.org
+https://freesound.org/people/JavierZumer/sounds/257234/
+https://freesound.org/people/JavierZumer/
+
+michorvath
+20 gauge shotgun gunshot by michorvath of freesound.org
+https://freesound.org/people/michorvath/sounds/427595/
+https://freesound.org/people/michorvath/
+
+IchBinJager
+Shotgun Action by IchBinJager of freesound.org
+https://freesound.org/people/IchBinJager/sounds/272068/
+https://freesound.org/people/IchBinJager/
+
+SuperPhat
+Sniper Rifle by SuperPhat of freesound.org
+https://freesound.org/people/SuperPhat/sounds/514228/
+https://freesound.org/people/SuperPhat/
+
+FilmmakersManual
+Bolt Sliding Forward (4) - Sniper Rifle by FilmmakersManual of freesound.org
+https://freesound.org/people/FilmmakersManual/sounds/522248/
+Bolt Sliding Back (5) - Sniper Rifle by FilmmakersManual of freesound.org
+https://freesound.org/people/FilmmakersManual/sounds/522252/
+https://freesound.org/people/FilmmakersManual/
+
+bolkmar
+FX: RETRO VIDEOGAME SOUNDS » Pistol (magazine reload only) by bolkmar of freesound.org
+https://freesound.org/people/bolkmar/sounds/455921/
+https://freesound.org/people/bolkmar/
+
+dustboxednorth
+Magazine Fumble » MagazineClatter_01.wav by dustboxednorth of freesound.org
+https://freesound.org/people/dustboxednorth/sounds/613704/
+https://freesound.org/people/dustboxednorth/
+
+jackyyang09
+Generic Firearm Dryfire by jackyyang09 of freesound.org
+https://freesound.org/people/jackyyang09/sounds/467432/
+https://freesound.org/people/jackyyang09/
+
+martian
+the mission gun foley gun shots » Foley bullet drop .wav by martian of freesound.org
+https://freesound.org/people/martian/sounds/182222/
+https://freesound.org/people/martian/
+
+CeebFrack
+shell load.ogg by CeebFrack of freesound.org
+https://freesound.org/people/CeebFrack/sounds/108793/
+https://freesound.org/people/CeebFrack/
+
+rammbostein
+12 Gauge Shell drop by rammbostein of freesound.org
+https://freesound.org/people/rammbostein/sounds/436070/
+https://freesound.org/people/rammbostein/
+
+EpicWizard
+Water - Paddle Strokes » Water_Paddle_impact_000.wav by EpicWizard of freesound.org
+https://freesound.org/people/EpicWizard/sounds/316573/
+https://freesound.org/people/EpicWizard/
+
+JuanFG
+Never Without My Denture » Button by JuanFG of freesound.org
+https://freesound.org/people/JuanFG/sounds/471911/
+https://freesound.org/people/JuanFG/
+
+TheKnave
+Coin & Currency Sounds » Taking Bill From Stack 5 by TheKnave of freesound.org
+https://freesound.org/people/TheKnave/sounds/435608/
+https://freesound.org/people/TheKnave/
+
+plasterbrain
+Hover 2 by plasterbrain of freesound.org
+https://freesound.org/people/plasterbrain/sounds/237421/
+https://freesound.org/people/plasterbrain/
+
+Raclure
+Game chimes » Cancel/miss chime, by Raclure of freesound.org
+https://freesound.org/people/Raclure/sounds/405548/
+https://freesound.org/people/Raclure/
+
+broumbroum
+sf3-sfx-menu-select.wav, by broumbroum of freesound.org
+https://freesound.org/people/broumbroum/sounds/50561/
+https://freesound.org/people/broumbroum/
+
+movingplaid
+concrete_steps » concrete_step_1.wav by movingplaid of freesound.org
+https://freesound.org/people/movingplaid/sounds/76187/
+concrete_steps » concrete_step_2.wav by movingplaid of freesound.org
+https://freesound.org/people/movingplaid/sounds/76188/
+concrete_steps » concrete_step_3.wav by movingplaid of freesound.org
+https://freesound.org/people/movingplaid/sounds/76189/
+concrete_steps » concrete_step_4.wav by movingplaid of freesound.org
+https://freesound.org/people/movingplaid/sounds/76190/
+https://freesound.org/people/movingplaid/
+
+LittleRobotSoundFactory
+Voices - Robot » Robot2_16.wav by LittleRobotSoundFactory of freesound.org
+https://freesound.org/people/LittleRobotSoundFactory/sounds/316311/
+Voices - Robot » Robot2_09.wav by LittleRobotSoundFactory of freesound.org
+https://freesound.org/people/LittleRobotSoundFactory/sounds/316306/
+Voices - Robot » Robot1_18.wav by LittleRobotSoundFactory of freesound.org
+https://freesound.org/people/LittleRobotSoundFactory/sounds/316302/
+Voices - Robot » Robot1_11.wav by LittleRobotSoundFactory of freesound.org
+https://freesound.org/people/LittleRobotSoundFactory/sounds/316295/
+Horror Sound Effects Library » Jingle_Lose_00.wav by LittleRobotSoundFactory of freesound.org
+https://freesound.org/people/LittleRobotSoundFactory/sounds/270467/
+Horror Sound Effects Library » Jingle_Win_00.wav by LittleRobotSoundFactory of freesound.org
+https://freesound.org/people/LittleRobotSoundFactory/sounds/270466/
+Horror Sound Effects Library » Jingle_Achievement_00.wav by LittleRobotSoundFactory of freesound.org
+https://freesound.org/people/LittleRobotSoundFactory/sounds/270468/
+https://freesound.org/people/LittleRobotSoundFactory/
+
+ShahruhAudio
+Robotic Transformation » robotic transform 3.wav by ShahruhAudio of freesound.org
+https://freesound.org/people/ShahruhAudio/sounds/336881/
+Robotic Transformation » robotic transform 1.wav by ShahruhAudio of freesound.org
+https://freesound.org/people/ShahruhAudio/sounds/336879/
+https://freesound.org/people/ShahruhAudio/
+
+VectorSpace
+robotics » Robotic Transformer 1 by VectorSpace of freesound.org
+https://freesound.org/people/VectorSpace/sounds/497617/
+https://freesound.org/people/VectorSpace/
+
+theguitarmanjp
+Heavy Dinosaur Footsteps Jurassic Park Water by theguitarmanjp
+https://freesound.org/people/theguitarmanjp/sounds/385013/
+https://freesound.org/people/theguitarmanjp/
+
+magnuswaker
+Armory » Schwing 1 by magnuswaker of freesound.org
+https://freesound.org/people/magnuswaker/sounds/524215/
+Armory » Rocket Blast by magnuswaker of freesound.org
+https://freesound.org/people/magnuswaker/sounds/540091/
+Explosions » Explosion 1 by magnuswaker of freesound.org
+https://freesound.org/people/magnuswaker/sounds/523089/
+https://freesound.org/people/magnuswaker/
+
+dotY21
+Robot sounds » robot roar by dotY21 of freesound.org
+https://freesound.org/people/dotY21/sounds/277055/
+https://freesound.org/people/dotY21/
+
+deleted_user_4798915
+Awesome Robotics Voices! » Robotic_Attack_00.wav by deleted_user_4798915 of freesound.org
+https://freesound.org/people/deleted_user_4798915/sounds/275231/
+SFX Robotic Sounds And Quotes » SFX - Robotic - Take Me To Your Leader.ogg by deleted_user_4798915 of freesound.org
+https://freesound.org/people/deleted_user_4798915/sounds/294463/
+https://freesound.org/people/deleted_user_4798915/
+
+Sea Fury
+Turbine Room.wav by Sea Fury of freesound.org
+https://freesound.org/people/Sea%20Fury/sounds/54638/
+https://freesound.org/people/Sea%20Fury/
+
+Julien Matthey
+FX » JM_NOIZ_Laser 06.wav by Julien Matthey of freesound.org
+https://freesound.org/people/Julien%20Matthey/sounds/470933/
+https://freesound.org/people/Julien%20Matthey/
+
+derplayer
+explosion_big_01.ogg by derplayer of freesound.org
+https://freesound.org/people/derplayer/sounds/587194/
+https://freesound.org/people/derplayer/
+
+florianreichelt
+Film Sounds/Movie Sounds » Fire Auto - car on fire by florianreichelt of freesound.org
+https://freesound.org/people/florianreichelt/sounds/563765/
+https://freesound.org/people/florianreichelt/
+
+alexo400
+SCI-FI_DOOR_2 by alexo400 of freesound.org
+https://freesound.org/people/alexo400/sounds/543654/
+https://freesound.org/people/alexo400/
+
+SoundsnapFX
+Sledgehammer - using to break a block of concrete. by SoundsnapFX of freesound.org
+https://freesound.org/people/SoundsnapFX/sounds/583964/
+https://freesound.org/people/SoundsnapFX/
+
+DaveOfDefeat2248
+Space Station FX » station deep ambience.wav by DaveOfDefeat2248 of freesound.org
+https://freesound.org/people/DaveOfDefeat2248/sounds/323091/
+https://freesound.org/people/DaveOfDefeat2248/
+
+lerwickdj
+lerwickdj_pads_soundscapes_2 » 16_ca_pads.wav by lerwickdj of freesound.org
+https://freesound.org/people/lerwickdj/sounds/246154/
+https://freesound.org/people/lerwickdj/
+
+Mativve
+Happy Sounds by Mativve » Electro win sound by Mativve of freesound.org
+https://freesound.org/people/Mativve/sounds/391539/
+https://freesound.org/people/Mativve/
+
+Daybreaker64
+'Win' Video Game Sound Effect by Daybreaker64 of freesound.org
+https://freesound.org/people/Daybreaker64/sounds/545207/
+https://freesound.org/people/Daybreaker64/
+
+Kastenfrosch
+Verloren.mp3 by Kastenfrosch of freesound.org
+https://freesound.org/people/Kastenfrosch/sounds/162457/
+https://freesound.org/people/Kastenfrosch/
+
+felixyadomi
+Jump Hop » hop8.wav by felixyadomi of freesound.org
+https://freesound.org/people/felixyadomi/sounds/456374/
+https://freesound.org/people/felixyadomi/
+
+SilverIllusionist
+Healing 1 (Crimson Respite).wav by SilverIllusionist of freesound.org
+https://freesound.org/people/SilverIllusionist/sounds/518801/
+https://freesound.org/people/SilverIllusionist/
+
+waveplaySFX
+[SFX] FX / ONESHOTS for EDM Pack 1 (Complete) » [SFX] Short Bassy Industrial Hit by waveplaySFX of freesound.org
+https://freesound.org/people/waveplaySFX/sounds/402692/
+https://freesound.org/people/waveplaySFX/
+
+LorenzoTheGreat
+System UI Sounds and Effects » Power Loss.wav by LorenzoTheGreat of freesound.org
+https://freesound.org/people/LorenzoTheGreat/sounds/417791/
+https://freesound.org/people/LorenzoTheGreat/
+
+Jonathan Harford
+Car Chirp High.wav by Jonathan Harford of freesound.org
+https://freesound.org/people/Jonathan%20Harford/sounds/116386/
+https://freesound.org/people/Jonathan%20Harford/
+
+nlux
+nlux computer sounds » Computer Says No by nlux of freesound.org
+https://freesound.org/people/nlux/sounds/623091/
+https://freesound.org/people/nlux/
+
+Natty23
+Puff of Smoke by Natty23 of freesound.org
+https://freesound.org/people/Natty23/sounds/257274/
+https://freesound.org/people/Natty23/
+
+bolkmar
+FX: RETRO VIDEOGAME SOUNDS » Machine gun (ammo only) by bolkmar of freesound.org
+https://freesound.org/people/bolkmar/sounds/455912/
+https://freesound.org/people/bolkmar/
+
+penisshit
+Robot power off by penisshit of freesound.org
+https://freesound.org/people/penisshit/sounds/501153/
+https://freesound.org/people/penisshit/
+
+stintx
+Pistol-Reload.wav by stintx of freesound.org
+https://freesound.org/people/stintx/sounds/107622/
+https://freesound.org/people/stintx/
+
+SamsterBirdies
+Explosion/Bang/Boom » Explosion in a can by SamsterBirdies of freesound.org
+https://freesound.org/people/SamsterBirdies/sounds/587887/
+https://freesound.org/people/SamsterBirdies/
+
+sqeeeek
+sqeeeek_bell_ting1.wav by sqeeeek of freesound.org
+https://freesound.org/people/sqeeeek/sounds/237106/
+https://freesound.org/people/sqeeeek/
+
+adcbicycle
+Ding hits » 20.wav by adcbicycle of freesound.org
+https://freesound.org/people/adcbicycle/sounds/13948/
+https://freesound.org/people/adcbicycle/
+
+Music by
+
+Darren Curtis
+
+Cruisin' of www.darrencurtismusic.com
+Double Cobra Triple Dragon of www.darrencurtismusic.com
+Trapped in the Mainframe of www.darrencurtismusic.com
+Lost World of www.darrencurtismusic.com

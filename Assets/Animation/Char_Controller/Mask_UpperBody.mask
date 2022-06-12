@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mask_UpperBody
+  m_Mask: 00000000010000000100000000000000000000000000000001000000000000000100000000000000000000000000000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: g_All_Player
+    m_Weight: 0
+  - m_Path: g_All_Player/p_Player_Limbs
+    m_Weight: 1
+  - m_Path: g_All_Player/p_Player_Torso
+    m_Weight: 1
+  - m_Path: Hips
+    m_Weight: 1
+  - m_Path: Hips/L_Leg_Top
+    m_Weight: 0
+  - m_Path: Hips/L_Leg_Top/L_Leg_Base
+    m_Weight: 1
+  - m_Path: Hips/L_Leg_Top/L_Leg_Base/L_Foot
+    m_Weight: 1
+  - m_Path: Hips/L_Leg_Top/L_Leg_Base/L_Foot/L_Toe_Base
+    m_Weight: 1
+  - m_Path: Hips/L_Leg_Top/L_Leg_Base/L_Foot/L_Toe_Base/L_Toe_Top
+    m_Weight: 1
+  - m_Path: Hips/R_Leg_Top
+    m_Weight: 0
+  - m_Path: Hips/R_Leg_Top/R_Leg_Base
+    m_Weight: 1
+  - m_Path: Hips/R_Leg_Top/R_Leg_Base/R_Foot
+    m_Weight: 1
+  - m_Path: Hips/R_Leg_Top/R_Leg_Base/R_Foot/R_Toe_Base
+    m_Weight: 1
+  - m_Path: Hips/R_Leg_Top/R_Leg_Base/R_Foot/R_Toe_Base/R_Toe_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm
+    m_Weight: 0
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Index_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Index_Base/L_Index_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Index_Base/L_Index_Down/L_Index_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Index_Base/L_Index_Down/L_Index_Mid/L_Index_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Middle_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Middle_Base/L_Middle_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Middle_Base/L_Middle_Down/L_Middle_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Middle_Base/L_Middle_Down/L_Middle_Mid/L_Middle_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Pinky_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Pinky_Base/L_Pinky_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Pinky_Base/L_Pinky_Down/L_Pinky_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Pinky_Base/L_Pinky_Down/L_Pinky_Mid/L_Pinky_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Ring_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Ring_Base/L_Ring_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Ring_Base/L_Ring_Down/L_Ring_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Ring_Base/L_Ring_Down/L_Ring_Mid/L_Ring_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Thumb_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Thumb_Base/L_Thumb_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Thumb_Base/L_Thumb_Down/L_Thumb_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/L_Shoulder/L_Arm/L_ForeArm/L_Hand/L_Thumb_Base/L_Thumb_Down/L_Thumb_Mid/L_Thumb_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/Neck
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/Neck/Head_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/Neck/Head_Base/Head_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Index_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Index_Base/R_Index_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Index_Base/R_Index_Down/R_Index_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Index_Base/R_Index_Down/R_Index_Mid/R_Index_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Middle_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Middle_Base/R_Middle_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Middle_Base/R_Middle_Down/R_Middle_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Middle_Base/R_Middle_Down/R_Middle_Mid/R_Middle_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Pinky_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Pinky_Base/R_Pinky_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Pinky_Base/R_Pinky_Down/R_Pinky_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Pinky_Base/R_Pinky_Down/R_Pinky_Mid/R_Pinky_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Ring_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Ring_Base/R_Ring_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Ring_Base/R_Ring_Down/R_Ring_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Ring_Base/R_Ring_Down/R_Ring_Mid/R_Ring_Top
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Thumb_Base
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Thumb_Base/R_Thumb_Down
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Thumb_Base/R_Thumb_Down/R_Thumb_Mid
+    m_Weight: 1
+  - m_Path: Hips/Spine_Base/Spine_Mid/Spine_Top/R_Shoukder/R_Arm/R_ForeArm/R_Hand/R_Thumb_Base/R_Thumb_Down/R_Thumb_Mid/R_Thumb_Top
+    m_Weight: 1
+  - m_Path: Targets_Hints
+    m_Weight: 0
+  - m_Path: Targets_Hints/Hints
+    m_Weight: 0
+  - m_Path: Targets_Hints/Hints/L_A_Hint
+    m_Weight: 0
+  - m_Path: Targets_Hints/Hints/L_L_Hint
+    m_Weight: 0
+  - m_Path: Targets_Hints/Hints/R_A_Hint
+    m_Weight: 1
+  - m_Path: Targets_Hints/Hints/R_L_Hint
+    m_Weight: 0
+  - m_Path: Targets_Hints/Targets
+    m_Weight: 0
+  - m_Path: Targets_Hints/Targets/L_A_Target
+    m_Weight: 0
+  - m_Path: Targets_Hints/Targets/L_L_Target
+    m_Weight: 0
+  - m_Path: Targets_Hints/Targets/R_A_Target
+    m_Weight: 1
+  - m_Path: Targets_Hints/Targets/R_L_Target
+    m_Weight: 0
