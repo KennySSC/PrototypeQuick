@@ -19,3 +19,7 @@ Includes:
 - Particles & FX
 - Sprites
 - Menus with level selector, game mode selector and graphic settings
+
+Warning: it is strongly recommended to have at least 16gb of ram, due to the size of the project.
+3.5 gb aprox size
+If you don't need the example scenes and your pc isn't so powerful, do not open them in editor.
