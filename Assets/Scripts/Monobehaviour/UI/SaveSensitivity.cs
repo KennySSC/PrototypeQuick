@@ -49,7 +49,7 @@ public class SaveSensitivity : MonoBehaviour
             tempTps.TempValuesTPS();
         }
         cameraMove = FindObjectsOfType<BaseCameraMove>();
-        sld.value = PlayerPrefs.GetFloat(saveName + "Sld");
+        sld.value = PlayerPrefs.GetFloat(saveName + "Sld",4);
         //Finds Camera moves in the scene
 
         if (tmpText != null)

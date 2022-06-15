@@ -29,7 +29,7 @@ public class Set_Preset : MonoBehaviour
     #region Main Functions
     private void Start()
     {
-        currentPP = PlayerPrefs.GetInt("PP_Set");
+        currentPP = PlayerPrefs.GetInt("PP_Set",0);
         SetNewPreset(presets[currentPP]);
         allPresetsButtons = FindObjectsOfType<Change_Preset>();
 

@@ -197,8 +197,8 @@ public class UI_Controller : MonoBehaviour
             }
         }
         // Set the saved quality
-        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
-        qualityDropDown.value = PlayerPrefs.GetInt("Quality");
+        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality",3));
+        qualityDropDown.value = PlayerPrefs.GetInt("Quality",3);
         qualityDropDown.RefreshShownValue();
 
         resolutions = Screen.resolutions;
@@ -217,9 +217,9 @@ public class UI_Controller : MonoBehaviour
             }
         }
         resolutionsDropDown.AddOptions(options);
-        resolutionsDropDown.value = PlayerPrefs.GetInt("ScreenResIndex");
+        resolutionsDropDown.value = PlayerPrefs.GetInt("ScreenResIndex", options.Count-1);
         resolutionsDropDown.RefreshShownValue();
-        SetResolution(PlayerPrefs.GetInt("ScreenResIndex"));
+        SetResolution(PlayerPrefs.GetInt("ScreenResIndex", options.Count-1));
 
         if (PlayerPrefs.GetInt("FullScreen") == 0)
         {

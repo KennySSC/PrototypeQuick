@@ -41,7 +41,7 @@ public class SaveVolume : MonoBehaviour
     private void Awake()
     {
         //Sets saved volume level
-        sld.value = PlayerPrefs.GetFloat(saveName + "Sld");
+        sld.value = PlayerPrefs.GetFloat((saveName + "Sld"), 1);
         float volume = Mathf.Log10(sld.value) * 20;
         mixer.audioMixer.SetFloat(saveName, volume);
         if (tmpText != null)
@@ -74,7 +74,7 @@ public class SaveVolume : MonoBehaviour
         mixer.audioMixer.SetFloat(saveName, volume);
         if (uiMixer != null)
         {
-            uiMixer.SetFloat("Volume", PlayerPrefs.GetFloat(saveName + "Vlm"));
+            uiMixer.SetFloat("Volume", PlayerPrefs.GetFloat((saveName + "Vlm"), (Mathf.Log10(1) * 20)));
         }
     }
     public void Load()
