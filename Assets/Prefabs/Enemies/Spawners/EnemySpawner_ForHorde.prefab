@@ -116,6 +116,7 @@ MonoBehaviour:
   spawnEnemyEvents: []
   patrolPositions: []
   spawnMode: 2
+  spawnPosition_Mode: 1
   positions:
   - {fileID: 4568313225597073914}
   - {fileID: 4587407400036203321}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum SpawnerMode {Random_Spawn, Ordered_Infinite, Horde};
+public enum SpawnPositionMode {Random_Position, Nearest_To_Player};
 public class Enemy_Spawner : MonoBehaviour
 {
     #region Serializable Variables
@@ -25,6 +26,10 @@ public class Enemy_Spawner : MonoBehaviour
     [Tooltip("Change the spawner behaviour. Random_Spawn = Randomly takes a enemy from the list and spawns it; Ordered_Infinite = Spawns the enemies in the list order, when the last spawns" +
         "the first enemy will be spawned next and repeat the cycle; Horde = it will spawns the enemies in the list order, but when reach the last one it will stop spawning")]
     [SerializeField] SpawnerMode spawnMode;
+
+    [Tooltip("Change the logic of the spawner to select where to spawn a enemy. Random_Position = Randomly selects one position from the list" +
+        "Nearest_To_Player = Spawns the enemy in the spawn position nearest to the player")]
+    [SerializeField] SpawnPositionMode spawnPosition_Mode;
 
     [Tooltip("Positions where the enemies can spawn. Each spawn will take one randomly")]
     [SerializeField] Transform[] positions;
@@ -62,6 +67,8 @@ public class Enemy_Spawner : MonoBehaviour
 
     #region Private variables
 
+    private GameObject player;
+
     private Hordes_Manager manager;
     private GameObject currentEnemyToSpawn;
     [SerializeField]private List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -82,7 +89,7 @@ public class Enemy_Spawner : MonoBehaviour
     void Start()
     {
         //Set variables
-
+        player = GameObject.FindGameObjectWithTag("Player");
         reset_TimeBetweenSpawns = timeBetweenSpawns;
         resetBurst = burstSpawn_Count;
         if(manager == null)
@@ -113,8 +120,28 @@ public class Enemy_Spawner : MonoBehaviour
     }
     public void SpawnEnemy()
     {
+        int positionIndex = 0;
+        if (spawnPosition_Mode == SpawnPositionMode.Random_Position)
+        {
+            positionIndex = Random.Range(0, positions.Length);
+        }else if( spawnPosition_Mode == SpawnPositionMode.Nearest_To_Player)
+        {
+            float closest = 999999f;
+            int index = 0;
+
+            foreach(Transform tm in positions)
+            {
+                float distance = Vector3.Distance(player.transform.position, tm.position);
+                if(distance < closest)
+                {
+                    closest = distance;
+                    positionIndex = index;
+                }
+                index++;
+            }
+        }
         //Set a random position of the list
-        int random = Random.Range(0, positions.Length);
+        
 
         //Random Spawn
         if (spawnMode == SpawnerMode.Random_Spawn)
@@ -146,11 +173,11 @@ public class Enemy_Spawner : MonoBehaviour
 
             if (spawnSound != null)
             {
-                Instantiate(spawnSound, positions[random].position, positions[random].rotation);
+                Instantiate(spawnSound, positions[positionIndex].position, positions[positionIndex].rotation);
             }
 
             //Spawn the enemy and set events to it. Also assign this spawner
-            GameObject spawn = Instantiate(currentEnemyToSpawn, positions[random].position, positions[random].rotation);
+            GameObject spawn = Instantiate(currentEnemyToSpawn, positions[positionIndex].position, positions[positionIndex].rotation);
 
             if (spawn.GetComponent<Enemy_Base>() != null)
             {

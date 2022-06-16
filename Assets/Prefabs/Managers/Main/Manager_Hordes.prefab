@@ -329,8 +329,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 45788682e2eda7f4ab127c35286012c5, type: 2}
     spawner: {fileID: 2402766015621067491}
   timeBetweenSpawns: 5
-  burstSpawn: 1
-  burstSpawnCount: 3
+  burstSpawn: 0
+  burstSpawnCount: 2
   timeBetweenHordes: 10
   maxEnemies_AtOnce: 40
   killEvent: {fileID: 4102882956230848172}
