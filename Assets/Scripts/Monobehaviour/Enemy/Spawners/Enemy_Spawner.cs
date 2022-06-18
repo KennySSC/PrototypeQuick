@@ -40,6 +40,9 @@ public class Enemy_Spawner : MonoBehaviour
     [Tooltip("Time that takes the spawn to generate a new enemy when it can")]
     [SerializeField] private float timeBetweenSpawns;
 
+    [Tooltip("If on, the spawned enemies always chases the player, no matter where it is. When off, uses the patrol behaviour")]
+    [SerializeField] bool alwaysKnow_WherePlayerIs;
+
 
     [Space]
 
@@ -182,14 +185,26 @@ public class Enemy_Spawner : MonoBehaviour
             if (spawn.GetComponent<Enemy_Base>() != null)
             {
                 spawn.GetComponent<Enemy_Base>().Set_Waypoints(patrolPositions);
+                if (alwaysKnow_WherePlayerIs)
+                {
+                    spawn.GetComponent<Enemy_Base>().Set_AlwaysKnow_WherePlayerIs();
+                }
             }
             else if (spawn.GetComponentInChildren<Enemy_Base>() != null)
             {
                 spawn.GetComponentInChildren<Enemy_Base>().Set_Waypoints(patrolPositions);
+                if (alwaysKnow_WherePlayerIs)
+                {
+                    spawn.GetComponent<Enemy_Base>().Set_AlwaysKnow_WherePlayerIs();
+                }
             }
             else if (spawn.GetComponentInParent<Enemy_Base>() != null)
             {
                 spawn.GetComponentInParent<Enemy_Base>().Set_Waypoints(patrolPositions);
+                if (alwaysKnow_WherePlayerIs)
+                {
+                    spawn.GetComponent<Enemy_Base>().Set_AlwaysKnow_WherePlayerIs();
+                }
             }
             if (spawn.GetComponent<BossHealthManager>() != null)
             {
@@ -319,6 +334,10 @@ public class Enemy_Spawner : MonoBehaviour
                 patrolPositions.Add(tn);
             }
         }
+    }
+    public void Set_AlwaysKnow_WherePlayerIs(bool newValue)
+    {
+        alwaysKnow_WherePlayerIs = newValue;
     }
     #endregion
 

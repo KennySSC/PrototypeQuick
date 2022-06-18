@@ -333,6 +333,7 @@ MonoBehaviour:
   burstSpawnCount: 2
   timeBetweenHordes: 10
   maxEnemies_AtOnce: 40
+  alwaysKnow_WherePlayerIs: 1
   killEvent: {fileID: 4102882956230848172}
   spawnEvent: {fileID: 4102882956230848173}
   enemiesKillEvents: []

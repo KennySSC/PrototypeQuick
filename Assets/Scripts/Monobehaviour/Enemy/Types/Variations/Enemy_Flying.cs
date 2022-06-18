@@ -56,6 +56,9 @@ public class Enemy_Flying : Enemy_Base
     [Tooltip("The time that takes the AI to return to it's patrol state after losing the player")]
     [SerializeField] float waitPatrol;
 
+    [Tooltip("If on, always chases the player, no matter where it is. When off, uses the patrol behaviour")]
+    [SerializeField] bool alwaysKnow_WherePlayerIs;
+
 
     [Header("Sound & Particles settings")]
 
@@ -109,6 +112,10 @@ public class Enemy_Flying : Enemy_Base
         shotPosition = controller.GetShotPosition();
         lookPosXRotation_Reset = lookPosition.eulerAngles.x;
         attackDelay = 0;
+        if (alwaysKnow_WherePlayerIs)
+        {
+            Set_AlwaysKnow_WherePlayerIs();
+        }
     }
     public override void Movement()
     {
@@ -299,6 +306,16 @@ public class Enemy_Flying : Enemy_Base
                 patrolPoints.Add(tn);
             }
         }
+    }
+    public override void Set_AlwaysKnow_WherePlayerIs()
+    {
+
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        waitToLosePlayer = 999999f;
+        resetLosePlayer = waitToLosePlayer;
+        isFollowPlayer = true;
+        alwaysKnow_WherePlayerIs = true;
+        SetPlayer(playerPosition);
     }
     #endregion
 

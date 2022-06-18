@@ -14,4 +14,6 @@ public abstract class Enemy_Base : MonoBehaviour
     public abstract bool MoveToLocation(Vector3 target);
 
     public abstract void Set_Waypoints(List<Transform> newWaypoints);
+
+    public abstract void Set_AlwaysKnow_WherePlayerIs();
 }

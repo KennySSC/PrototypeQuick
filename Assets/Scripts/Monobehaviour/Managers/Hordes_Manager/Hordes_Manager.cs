@@ -42,6 +42,10 @@ public class Hordes_Manager : MonoBehaviour
     [Tooltip("Max enemies that can be in the map at once, overriding the spawners amount")]
     [SerializeField] int maxEnemies_AtOnce;
 
+    [Tooltip("If on, always chases the player, no matter where it is. When off, uses the patrol behaviour")]
+    [SerializeField] bool alwaysKnow_WherePlayerIs;
+
+
     [Space]
 
 
@@ -106,6 +110,10 @@ public class Hordes_Manager : MonoBehaviour
         }
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         AssignHordes();
+        foreach (Hordes_Holder hh in enemySpawners_WithHordes)
+        {
+            hh.spawner.Set_AlwaysKnow_WherePlayerIs(alwaysKnow_WherePlayerIs);
+        }
 
     }
     private void AssignHordes()

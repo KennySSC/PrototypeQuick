@@ -50,6 +50,9 @@ public class Enemy_GunShooter : Enemy_Base
     [Tooltip("The time that takes the AI to return to it's patrol state after losing the player")]
     [SerializeField] float waitPatrol;
 
+    [Tooltip("If on, always chases the player, no matter where it is. When off, uses the patrol behaviour")]
+    [SerializeField] bool alwaysKnow_WherePlayerIs;
+
 
     [Header("Sound & Particles settings")]
 
@@ -124,7 +127,11 @@ public class Enemy_GunShooter : Enemy_Base
         {
             controller = GetComponent<EnemyController>();
             hasGun = controller.SendHasGun();
-        } 
+        }
+        if (alwaysKnow_WherePlayerIs)
+        {
+            Set_AlwaysKnow_WherePlayerIs();
+        }
     }
     public override void Movement()
     {
@@ -424,6 +431,15 @@ public class Enemy_GunShooter : Enemy_Base
                 patrolPoints.Add(tn);
             }
         }
+    }
+    public override void Set_AlwaysKnow_WherePlayerIs()
+    {
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        waitToLosePlayer = 999999f;
+        resetLosePlayer = waitToLosePlayer;
+        isFollowPlayer = true;
+        alwaysKnow_WherePlayerIs = true;
+        SetPlayer(playerPosition);
     }
     #endregion
     #region Coroutines

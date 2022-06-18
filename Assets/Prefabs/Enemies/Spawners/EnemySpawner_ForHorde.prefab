@@ -125,6 +125,7 @@ MonoBehaviour:
   - {fileID: 5609449734858210888}
   maxEnemies_AtOnce: 0
   timeBetweenSpawns: 5
+  alwaysKnow_WherePlayerIs: 1
   burstSpawn: 0
   burstSpawn_Count: 0
   spawnSound: {fileID: 2248418158218572906, guid: 6c74592d7d098234590ea2a12be64368, type: 3}
