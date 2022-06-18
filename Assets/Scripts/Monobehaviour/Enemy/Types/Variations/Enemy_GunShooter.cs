@@ -439,7 +439,23 @@ public class Enemy_GunShooter : Enemy_Base
         resetLosePlayer = waitToLosePlayer;
         isFollowPlayer = true;
         alwaysKnow_WherePlayerIs = true;
+        agent.speed = chasingSpeed;
+        if (canPerform_DetectPlayerSound && detectPlayerSound != null && !isFollowPlayer)
+        {
+            Instantiate(detectPlayerSound, transform.position, transform.rotation);
+            canPerform_DetectPlayerSound = false;
+            StartCoroutine(Reset_DetectSound());
+        }
         SetPlayer(playerPosition);
+    }
+    public override void TryToGoToPlayer()
+    {
+        GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (tempPlayer != null)
+        {
+            SetPlayer(tempPlayer.transform);
+            isFollowPlayer = true;
+        }
     }
     #endregion
     #region Coroutines

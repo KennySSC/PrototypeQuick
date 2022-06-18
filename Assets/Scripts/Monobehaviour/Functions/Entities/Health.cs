@@ -309,6 +309,10 @@ public class Health : MonoBehaviour
                     Instantiate(damageSound, transform.position, transform.rotation);
                 }
             }
+            if(enemy != null)
+            {
+                enemy.TryToGoToPlayer();
+            }
             currentHealth -= damage;
             //if camera effects applies values
             healthNormalized = (currentHealth / maxHealth);

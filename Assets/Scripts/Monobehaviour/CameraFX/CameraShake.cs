@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    [SerializeField] Transform cameraObject;
+
+    private Vector3 originalPosition;
+    private void Start()
+    {
+        originalPosition = cameraObject.transform.localPosition;
+    }
     public void DoShakeCam(float duration, float magnitude, GameObject cameraObj, bool isTps)
     {
         StartCoroutine(ShakeCam(duration, magnitude, cameraObj, isTps));
     }
     private IEnumerator ShakeCam(float duration, float magnitude, GameObject cameraObj, bool isTps)
     {
-        Vector3 originalPos = cameraObj.transform.localPosition;
+        
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -24,7 +31,7 @@ public class CameraShake : MonoBehaviour
             }
             else
             {
-                cameraObj.transform.localPosition = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.z);
+                cameraObj.transform.localPosition = new Vector3(originalPosition.x + x, originalPosition.y + y, originalPosition.z);
             }
             elapsed += Time.deltaTime;
 
@@ -32,7 +39,7 @@ public class CameraShake : MonoBehaviour
         }
         if (!isTps)
         {
-            cameraObj.transform.localPosition = originalPos;
+            cameraObj.transform.localPosition = originalPosition;
         }
     }
 }
