@@ -195,7 +195,7 @@ public class Enemy_Spawner : MonoBehaviour
                 spawn.GetComponentInChildren<Enemy_Base>().Set_Waypoints(patrolPositions);
                 if (alwaysKnow_WherePlayerIs)
                 {
-                    spawn.GetComponent<Enemy_Base>().Set_AlwaysKnow_WherePlayerIs();
+                    spawn.GetComponentInChildren<Enemy_Base>().Set_AlwaysKnow_WherePlayerIs();
                 }
             }
             else if (spawn.GetComponentInParent<Enemy_Base>() != null)
@@ -203,7 +203,7 @@ public class Enemy_Spawner : MonoBehaviour
                 spawn.GetComponentInParent<Enemy_Base>().Set_Waypoints(patrolPositions);
                 if (alwaysKnow_WherePlayerIs)
                 {
-                    spawn.GetComponent<Enemy_Base>().Set_AlwaysKnow_WherePlayerIs();
+                    spawn.GetComponentInParent<Enemy_Base>().Set_AlwaysKnow_WherePlayerIs();
                 }
             }
             if (spawn.GetComponent<BossHealthManager>() != null)
@@ -244,7 +244,7 @@ public class Enemy_Spawner : MonoBehaviour
         {
             currentEnemyToSpawn = null;
         }
-
+        currentEnemies++;
     }
 
     #endregion

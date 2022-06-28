@@ -9,7 +9,7 @@ public class CameraFX : MonoBehaviour
     #region Serializable Variables
     [Header("Main Settings")]
 
-    [Tooltip("Set camera fx to behave for freelook cinemachine cameras")]
+    [Tooltip("Set camera fx to behave for non fps cameras")]
     [SerializeField] private bool isTps = false;
 
     [Tooltip("Camera shake script that will controll that effect")]

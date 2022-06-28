@@ -19,6 +19,11 @@ public class CameraShake : MonoBehaviour
     {
         
         float elapsed = 0f;
+        Vector3 returnPosition = new Vector3(0,0,0);
+        if (isTps)
+        {
+             returnPosition = cameraObj.transform.localPosition;
+        }
 
         while (elapsed < duration)
         {
@@ -40,6 +45,10 @@ public class CameraShake : MonoBehaviour
         if (!isTps)
         {
             cameraObj.transform.localPosition = originalPosition;
+        }
+        else
+        {
+            cameraObj.transform.localPosition = returnPosition;
         }
     }
 }
