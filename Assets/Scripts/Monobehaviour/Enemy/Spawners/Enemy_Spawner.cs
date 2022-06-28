@@ -81,7 +81,7 @@ public class Enemy_Spawner : MonoBehaviour
 
     private int currentIndex = 0;
     private int resetBurst = 0;
-    private int currentEnemies = 0;
+    [SerializeField]private int currentEnemies = 0;
 
     [SerializeField]private float reset_TimeBetweenSpawns;
     private float waitTime_ToNextHorde = 0;
@@ -116,6 +116,10 @@ public class Enemy_Spawner : MonoBehaviour
                 if (currentEnemies < maxEnemies_AtOnce && CanSpawn)
                 {
                     SpawnEnemy();
+                    timeBetweenSpawns = reset_TimeBetweenSpawns;
+                }
+                else
+                {
                     timeBetweenSpawns = reset_TimeBetweenSpawns;
                 }
             }
