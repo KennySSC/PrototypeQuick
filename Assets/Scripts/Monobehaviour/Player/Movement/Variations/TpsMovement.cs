@@ -13,6 +13,8 @@ public class TpsMovement : BaseMovement
     [Tooltip("Player's camera")]
     [SerializeField] Transform cam;
 
+    [SerializeField] Transform shotPos;
+
     [Tooltip("Player's GameObject with CharacterController script")]
     [SerializeField] CharacterController charController;
 
@@ -156,7 +158,7 @@ public class TpsMovement : BaseMovement
         resetSteps = timeBetweenSteps_Base;
         runMultiplier = runSpeed / baseSpeed;
         crouchMultiplier = crouchSpeed / baseSpeed;
-
+        shotPos.localPosition = new Vector3(shotPos.localPosition.x, shotPos.localPosition.y, cam.GetComponent<Camera>().nearClipPlane);
     }
     public override void Movement(Vector2 inputAxis)
     {
@@ -531,11 +533,11 @@ public class TpsMovement : BaseMovement
     }
     public override Transform GetShotPosition()
     {
-        return cam;
+        return shotPos;
     }
     public Transform ShootPosition()
     {
-        return cam;
+        return shotPos;
     }
     public override void ChangeHasGun(bool change)
     {

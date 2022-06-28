@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Health script that calculates the remaining life of the player")]
     [SerializeField] Health hp;
 
+    [Tooltip("Camera offset for tps camera, needed")]
+    [SerializeField] Transform tpsCameraOffset;
+
     [Space]
 
 
@@ -228,6 +231,8 @@ public class PlayerMovement : MonoBehaviour
     private Move_UpDown currentPf_UD;
     private Transform currentArms_Target;
     private Collider playerCollider;
+
+    private CinemachineFreeLook flCam;
 
     #endregion
 
@@ -816,7 +821,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!gm.activeSelf)
                 {
+                    /*if (gm.GetComponentInChildren<CinemachineFreeLook>())
+                    {
+                        flCam = gm.GetComponentInChildren<CinemachineFreeLook>();
+                        gm.GetComponentInChildren<CinemachineFreeLook>().Follow = transform;
+                        gm.GetComponentInChildren<CinemachineFreeLook>().LookAt = transform;
+                        StartCoroutine(WaitToChange_TpsCamTarget());
+                    }*/
                     gm.SetActive(true);
+                  
                 }
             }
         }
@@ -1093,6 +1106,13 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         ui_Controller.SetActive(false);
+    }
+
+    IEnumerator WaitToChange_TpsCamTarget()
+    {
+        yield return new WaitForSeconds(0.1f);
+        flCam.Follow = tpsCameraOffset;
+        flCam.LookAt = tpsCameraOffset;
     }
     #endregion
 }

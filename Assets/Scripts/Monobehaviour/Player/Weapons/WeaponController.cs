@@ -101,7 +101,7 @@ public class WeaponController : MonoBehaviour
     #endregion
 
     #region Private variables
-    private Transform shotPosition;
+    [SerializeField]private Transform shotPosition;
     private Transform objectSpawnPos;
     private bool canShot = true;
     private bool spawnShotObj = false;
@@ -514,6 +514,10 @@ public class WeaponController : MonoBehaviour
     public void ChangeShotPos(Transform position)
     {
         shotPosition = position;
+        if(currentGun!= null)
+        {
+            currentGun.ChangeShotSpawn(position);
+        }
     }
 
     public void ChangeCanSpawnShotObj(bool newValue)
