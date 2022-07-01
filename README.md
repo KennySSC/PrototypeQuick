@@ -23,3 +23,6 @@ Includes:
 Warning: it is strongly recommended to have at least 16gb of ram, due to the size of the project.
 3.5 gb aprox size
 If you don't need the example scenes and your pc isn't so powerful, do not open them in editor.
+
+Basic tutorials (Spanish):
+https://www.youtube.com/playlist?list=PLJXIyXB_mTzrn2w9gIJIcQjKFpTE_cKh8
