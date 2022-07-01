@@ -56,7 +56,8 @@ public class ObjectiveManager : MonoBehaviour
     #region private variables
     private Transform ui_Objective_Container;
     private List<Objective> currentObjectives = new List<Objective>();
-    private List<GameObject> uiTexts = new List<GameObject>();
+    [SerializeField] private List<GameObject> uiTexts = new List<GameObject>();
+    [SerializeField] private List<GameObject> pauseTexts = new List<GameObject>();
     private UI_Controller controller;
 
     private List<GameObject> notUsed_ObjectivesObj = new List<GameObject>();
@@ -122,6 +123,10 @@ public class ObjectiveManager : MonoBehaviour
             {
                 uiTexts.Add(uiShow);
             }
+            if (!pauseTexts.Contains(uiPause))
+            {
+                pauseTexts.Add(uiPause);
+            }
             goal.SetManager(this);
             goal.SetTextInfo(uiShow, uiPause);
         }
@@ -152,27 +157,73 @@ public class ObjectiveManager : MonoBehaviour
         {
             if (uiTextPrefab.GetComponent<Text>() != null)
             {
-                foreach(GameObject obj in uiTexts)
+                Debug.Log("Has normal text");
+                GameObject tempUi = null;
+                GameObject tempPause = null;
+                foreach (GameObject obj in uiTexts)
                 {
-                    if(currentCompleted.GetObjectiveDescription() == obj.GetComponent<Text>().text)
+                    if (currentCompleted.GetObjectiveDescription() == obj.GetComponent<Text>().text)
                     {
+                        Debug.Log("Found normal text");
                         obj.GetComponent<Objective_Description>().FinishObjective();
-                        uiTexts.Remove(obj);
+                        tempUi = obj;
                     }
+                }
+                foreach (GameObject obj in pauseTexts)
+                {
+                    if (currentCompleted.GetObjectiveDescription() == obj.GetComponent<Text>().text)
+                    {
+                        obj.GetComponent<Text>().text = "Completed";
+                        obj.GetComponent<Text>().color = Color.green;
+                        obj.GetComponent<Text>().text = "Completed";
+                        tempPause = obj;
+                    }
+                }
+                if (uiTexts.Contains(tempUi))
+                {
+                    uiTexts.Remove(tempUi);
+                }
+                if (pauseTexts.Contains(tempPause))
+                {
+                    pauseTexts.Remove(tempPause);
                 }
             }
             else if (uiTextPrefab.GetComponent<TMP_Text>() != null)
             {
+                Debug.Log("Has TMP");
+                GameObject tempUi = null;
+                GameObject tempPause = null;
                 foreach (GameObject obj in uiTexts)
                 {
                     if (currentCompleted.GetObjectiveDescription() == obj.GetComponent<TMP_Text>().text)
                     {
+                        Debug.Log("Found TMP");
                         obj.GetComponent<Objective_Description>().FinishObjective();
-                        uiTexts.Remove(obj);
+                        tempUi = obj;
                     }
                 }
+                foreach (GameObject obj in pauseTexts)
+                {
+                    if (currentCompleted.GetObjectiveDescription() == obj.GetComponent<TMP_Text>().text)
+                    {
+                        obj.GetComponent<TMP_Text>().text = "Completed";
+                        obj.GetComponent<TMP_Text>().color = Color.green;
+                        obj.GetComponent<TMP_Text>().text = "Completed";
+                        tempPause = obj;
+                    }
+                }
+                if (uiTexts.Contains(tempUi))
+                {
+                    uiTexts.Remove(tempUi);
+                }
+                if (pauseTexts.Contains(tempPause))
+                {
+                    pauseTexts.Remove(tempPause);
+                }
             }
+
             currentObjectives.Remove(currentCompleted);
+      
         }
         if(currentObjectives.Count <= 0)
         {

@@ -100,7 +100,7 @@ public class Objective_StayInZone : Objective
     {
         for(int i =0; i<zones.Length; i++)
         {
-            if (!zones[i].GetFinished())
+            if (zones[i].GetFinished() == false)
             {
                 UpdateTextInfo();
                 isComplete = false;
@@ -108,16 +108,14 @@ public class Objective_StayInZone : Objective
                 {
                     Instantiate(progressObjectiveSound, transform.position, transform.rotation);
                 }
+                UpdateTextInfo();
                 return;
             }
-            else
-            {
-                isComplete = true;
-                ObjectiveComplete();
-            }
         }
-        
+        isComplete = true;
         UpdateTextInfo();
+        ObjectiveComplete();
+  
     }
 
     #endregion

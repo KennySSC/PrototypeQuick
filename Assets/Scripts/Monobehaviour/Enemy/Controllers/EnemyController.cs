@@ -105,7 +105,6 @@ public class EnemyController : MonoBehaviour
             {
                 int random = Random.Range(0, posibleWeapons.Length);
                 int fullBullets = posibleWeapons[random].GetComponent<BaseGun>().GetMagazineSize();
-                Debug.Log(fullBullets);
                 weaponController.OnTakeNewGun(fullBullets, posibleWeapons[random]);
             }
             else

@@ -535,7 +535,6 @@ public class Health : MonoBehaviour
             if(materials!= null && materials.Count > 0)
             {
                 dissolveFull += (Time.deltaTime / dissolveDuration);
-                Debug.Log(dissolveFull);
                 foreach (Material mtl in materials)
                 {
                     mtl.SetInt("_Dissolving", 1);

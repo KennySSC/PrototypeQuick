@@ -66,7 +66,8 @@ public class Objective_KillBoss : Objective
     {
         //Tell the objective manager that the objective has been completed
         isComplete = true;
-        foreach(Event evt in completeEvents)
+        UpdateTextInfo();
+        foreach (Event evt in completeEvents)
         {
             evt.DoEvent();
         }

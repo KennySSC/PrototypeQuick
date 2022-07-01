@@ -148,7 +148,6 @@ public class Enemy_Flying : Enemy_Base
                         attackDelay -= Time.deltaTime;
                         if (attackDelay <= 0 && controller != null)
                         {
-                            Debug.Log("try to shoot");
                             if(shotParticlePrefab != null)
                             {
                                 GameObject particle = Instantiate(shotParticlePrefab, shotPosition.position, shotPosition.rotation);

@@ -154,7 +154,7 @@ public class IsoMovement : BaseMovement
             calculateSteps = false;
         }
         //Moves the player
-        Vector3 moving = (((transform.right * inputAxis.x) + (transform.forward * inputAxis.y)) * currentMaxSpeed);
+        Vector3 moving = (((cam.transform.right * inputAxis.x) + (cam.transform.up * inputAxis.y)) * currentMaxSpeed);
         charController.Move(moving * Time.deltaTime);
         velocity.y += gravity * Time.deltaTime;
         if (isOnCoyoteTime && velocity.y < 0)
