@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
 
     [SerializeField] bool destroyAfterDeath = true;
 
+    [SerializeField] bool isPlayer = false;
+
     [Space]
 
     [Header("Boss settings")]
@@ -68,13 +70,36 @@ public class Health : MonoBehaviour
     [Space]
 
 
+    [Header("Respawn Settings")]
+
+    [Tooltip("Turn on if you want to override the death events and instead of losing, respawning the player. This only works if the bool *isPlayer* is also turned on ")]
+    [SerializeField] bool canRespawn = false;
+
+    [SerializeField] Transform respawnPosition;
+
+    [Tooltip("The wait time before the player can move again after respawning")]
+    [SerializeField] float respawnTime = 1f;
+
+    [Tooltip("Events that will trigger when the player health reach 0. Think them as the ones that will trigger instead of the death events.If you don't need them leave it empty")]
+    [SerializeField] List<Event> preRespawnEvents = new List<Event>();
+
+    [Tooltip("Events that will trigger when the player health respawns. If you don't need them leave it empty")]
+    [SerializeField] List<Event> respawnEvents = new List<Event>();
+
+    [Tooltip("This events will trigger when you call the function *TriggerLoseEvents*, these are the alternative 'death' events when you want the player to lose")]
+    [SerializeField] List<Event> loseEvents = new List<Event>();
+
+    [Space]
+
+
+
     [Header("Death effects settings")]
 
 
-    [Tooltip("Dissolve effect after dying duration")]
+    [Tooltip("Dissolve effect after dying duration. If you allow respawning, after the animation the player will be teleported to the respawn position.")]
     [SerializeField] float dissolveDuration;
 
-    [Tooltip("Animation duration before dissolving")]
+    [Tooltip("Animation duration before dissolving. It will be used for pre respawning to")]
     [SerializeField] float deathAnimation_Time = 1f;
 
 
@@ -174,15 +199,15 @@ public class Health : MonoBehaviour
             }
         }
         //Get all materials for dissolve effect
-        if(GetComponent<MeshRenderer>()!= null)
+        if (GetComponent<MeshRenderer>() != null)
         {
             renderers = GetComponents<MeshRenderer>();
-            foreach(MeshRenderer render in renderers)
+            foreach (MeshRenderer render in renderers)
             {
                 Material[] mtls = render.materials;
                 foreach (Material mtl in mtls)
                 {
-                    if(mtl!= null && !materials.Contains(mtl))
+                    if (mtl != null && !materials.Contains(mtl))
                     {
                         materials.Add(mtl);
                     }
@@ -191,7 +216,7 @@ public class Health : MonoBehaviour
 
         }
         renderers = null;
-        if(GetComponentInChildren<MeshRenderer>()!= null)
+        if (GetComponentInChildren<MeshRenderer>() != null)
         {
             renderers = GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer render in renderers)
@@ -304,23 +329,23 @@ public class Health : MonoBehaviour
                 {
                     bossHpManager.GetDamage((int)currentHealth);
                 }
-                if(damageSound!= null)
+                if (damageSound != null)
                 {
                     Instantiate(damageSound, transform.position, transform.rotation);
                 }
             }
-            if(enemy != null)
+            if (enemy != null)
             {
                 enemy.TryToGoToPlayer();
             }
             currentHealth -= damage;
             //if camera effects applies values
             healthNormalized = (currentHealth / maxHealth);
-            if(healthNormalized < 0)
+            if (healthNormalized < 0)
             {
                 healthNormalized = 0;
             }
-            if(cameraEffects!= null)
+            if (cameraEffects != null)
             {
                 if (shakeCamera)
                 {
@@ -334,7 +359,7 @@ public class Health : MonoBehaviour
             if (currentHealth <= 0 && !isBoss)
             {
                 currentHealth = 0;
-                if(deathSound != null)
+                if (deathSound != null)
                 {
                     Instantiate(deathSound, transform.position, transform.rotation);
                 }
@@ -344,7 +369,17 @@ public class Health : MonoBehaviour
                     {
                         enemy.ChangeIsAlive(false);
                     }
-                    StartCoroutine(StartDeath());
+                    //Triggers the respawn function
+                    if (isPlayer && canRespawn)
+                    {
+
+                    }
+                    //Triggers death
+                    else
+                    {
+                        StartCoroutine(StartDeath());
+                    }
+
                 }
             }
             if (currentHealth <= 0 && isBoss)
@@ -362,7 +397,7 @@ public class Health : MonoBehaviour
                 }
             }
         }
-       
+
     }
     public void GetHealing(int health)
     {
@@ -373,7 +408,7 @@ public class Health : MonoBehaviour
             currentHealth = maxHealth;
         }
         //if camera effects applies values
-        healthNormalized = (currentHealth/maxHealth);
+        healthNormalized = (currentHealth / maxHealth);
         if (cameraEffects != null)
         {
             cameraEffects.CalculateVignette(healthNormalized);
@@ -387,7 +422,7 @@ public class Health : MonoBehaviour
             healthPoints.text = currentHealth.ToString("00");
             healthBar_Fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
         }
-        if(healingSound != null)
+        if (healingSound != null)
         {
             Instantiate(healingSound, transform.position, transform.rotation);
         }
@@ -425,6 +460,10 @@ public class Health : MonoBehaviour
     {
         StartCoroutine(WaitSetCameraFX(newFXCam));
     }
+    public void SetRespawnPosition(Transform newRespawnPos)
+    {
+        respawnPosition = newRespawnPos;
+    }
     public Enemy_Spawner GetSpawner()
     {
         return spawner;
@@ -432,12 +471,23 @@ public class Health : MonoBehaviour
     //Add events externally to the list. Call this if you need to add new ones.
     public void Add_DeadEvents(List<Event> newEvents)
     {
-        foreach(Event evt in newEvents)
+        foreach (Event evt in newEvents)
         {
             if (!deathEvents.Contains(evt))
             {
                 deathEvents.Add(evt);
             }
+        }
+    }
+    //Externally trigger lose events when you want the player to lose (recommended when respawn is enabled)
+    public void TriggerLoseEvents()
+    {
+        foreach (Event evt in loseEvents)
+        {
+            evt.DoEvent();
+            List<GameObject> obj = new List<GameObject>();
+            obj.Add(this.gameObject);
+            evt.GetObjects(obj);
         }
     }
     private void HealingByTime()
@@ -482,7 +532,7 @@ public class Health : MonoBehaviour
     {
         isDying = true;
         //If has death event, do it
-        if(deathEvents!= null && deathEvents.Count>0)
+        if(deathEvents!= null && deathEvents.Count>0 && !canRespawn)
         {
             foreach(Event evt in deathEvents)
             {
@@ -493,6 +543,19 @@ public class Health : MonoBehaviour
                 {
                     obj.Add(spawner.gameObject);
                 }
+                evt.GetObjects(obj);
+            }
+        }else if (preRespawnEvents != null && preRespawnEvents.Count > 0 && canRespawn)
+        {
+            if(GetComponent<PlayerMovement>()!= null)
+            {
+                GetComponent<PlayerMovement>().enabled = false;
+            }
+            foreach (Event evt in preRespawnEvents)
+            {
+                evt.DoEvent();
+                List<GameObject> obj = new List<GameObject>();
+                obj.Add(this.gameObject);
                 evt.GetObjects(obj);
             }
         }
@@ -554,6 +617,88 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (canRespawn)
+        {
+            if(respawnPosition != null)
+            {
+                transform.position = respawnPosition.position;
+                canReceiveDamage = false;
+                if (materials != null && materials.Count > 0)
+                {
+                    foreach (Material mtl in materials)
+                    {
+                        mtl.SetInt("_Dissolving", 0);
+                        mtl.SetFloat("_Dissolve", 0);
+                    }
+                }
+                StartCoroutine(RespawnAnimation_Events());
+            }
+        }
+    }
+
+    private IEnumerator ReapearAnimation()
+    {
+        float elapsed = 0f;
+        float dissolveFull = 1f;
+        if (dissolveDuration < 0)
+        {
+            dissolveDuration *= -1;
+        }
+        else if (dissolveDuration == 0)
+        {
+            dissolveDuration = 0.1f;
+        }
+        while (elapsed < dissolveDuration)
+        {
+            elapsed += Time.deltaTime;
+            if (materials != null && materials.Count > 0)
+            {
+                dissolveFull -= (Time.deltaTime / dissolveDuration);
+                foreach (Material mtl in materials)
+                {
+                    mtl.SetInt("_Dissolving", 1);
+                    mtl.SetFloat("_Dissolve", dissolveFull);
+                }
+            }
+            yield return null;
+        }
+        if (materials != null && materials.Count > 0)
+        {
+            foreach (Material mtl in materials)
+            {
+                mtl.SetInt("_Dissolving", 0);
+                mtl.SetFloat("_Dissolve", 1);
+            }
+        }
+    }
+    private IEnumerator RespawnAnimation_Events()
+    {
+        if (respawnEvents != null && respawnEvents.Count > 0 && canRespawn)
+        {
+            foreach (Event evt in respawnEvents)
+            {
+                evt.DoEvent();
+                List<GameObject> obj = new List<GameObject>();
+                obj.Add(this.gameObject);
+                evt.GetObjects(obj);
+            }
+        }
+        StartCoroutine(ReapearAnimation());
+        yield return new WaitForSeconds(respawnTime);
+        GetHealing(999999);
+        canReceiveDamage = true;
+        if(anim != null)
+        {
+            anim.SetInteger("AnimVal", 0);
+            anim.SetInteger("Gun_AnimVal", 0);
+            anim.Play("Idle", 0);
+            anim.Play("Default", 1);
+        }
+        if (GetComponent<PlayerMovement>() != null)
+        {
+            GetComponent<PlayerMovement>().enabled = true;
+        }
+
     }
     private IEnumerator WaitSetCameraFX(CameraFX newFXCam)
     {
@@ -566,5 +711,7 @@ public class Health : MonoBehaviour
             cameraEffects.CalculateSaturation(healthNormalized);
         }
     }
+
+    
     #endregion
 }

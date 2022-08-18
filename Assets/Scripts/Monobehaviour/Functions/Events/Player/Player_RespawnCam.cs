@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_DeathCam : Event
+public class Player_RespawnCam : Event
 {
     #region Serializable Variables
 
@@ -11,6 +11,9 @@ public class Player_DeathCam : Event
 
     [Tooltip("Death camera with animator object")]
     [SerializeField] GameObject deathCam;
+
+    [Tooltip("The wait time before the player cam activates and this respawn cam deactivates")]
+    [SerializeField] float respawnCamAnimation = 2.5f;
 
     #endregion
 
@@ -43,8 +46,10 @@ public class Player_DeathCam : Event
             currentCam.SetActive(false);
         }
         player.SetChangeView(false);
-        deathCam.GetComponent<Animator>().SetInteger("AnimVal", 0);
-        deathCam.GetComponent<Animator>().Play("Death");
+        deathCam.GetComponent<Animator>().SetInteger("AnimVal",1);
+        deathCam.GetComponent<Animator>().Play("Respawn");
+        StartCoroutine(SwitchCams());
+
     }
 
     #endregion
@@ -53,8 +58,26 @@ public class Player_DeathCam : Event
 
     public override void GetObjects(List<GameObject> newObjects)
     {
-       
+
+    }
+
+    #endregion
+
+    #region Coroutines
+
+    private IEnumerator SwitchCams()
+    {
+        yield return new WaitForSeconds(respawnCamAnimation);
+        if (deathCam.activeSelf)
+        {
+            deathCam.SetActive(false);
+        }
+        if (!currentCam.activeSelf)
+        {
+            currentCam.SetActive(true);
+        }
     }
 
     #endregion
 }
+
