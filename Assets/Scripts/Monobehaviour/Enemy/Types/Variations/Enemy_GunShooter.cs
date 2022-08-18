@@ -20,16 +20,22 @@ public class Enemy_GunShooter : Enemy_Base
 
     [SerializeField] LayerMask groundMask;
 
+
+    [Space]
+
+
+    [Header("Look and detection settings")]
+
+
     [Tooltip("AI eyes, forward direction of this object is where the AI will detect the player")]
     [SerializeField] Transform lookPosition;
 
-    [Tooltip("An object that will the player on x rotation, allowing the AI attacking the player if the player isn't in the same level, but it's visible")]
+    [Tooltip("Layermask that allows the enemy to detect some objects. Ground & Player are recommended. If you select the same layer as any object inside the enemy it will detect itself and " +
+        "it will not detect the player properly. You can select more than one")]
+    [SerializeField] LayerMask enemyDetectionMask;
+
+    [Tooltip("An object that will look to the player on x rotation, allowing the AI attacking the player if the player isn't in the same level, but it's visible")]
     [SerializeField] Transform playerYLook;
-
-    [Header("Main settings")]
-    [SerializeField] float patrolSpeed;
-
-    [SerializeField] float chasingSpeed;
 
     [Tooltip("Max looking distance")]
     [SerializeField] float lookingDistance;
@@ -38,8 +44,33 @@ public class Enemy_GunShooter : Enemy_Base
     [SerializeField] float lookingRadius;
 
     [Tooltip("The time after stop seeing the player that AI still knowns where the player is. Useful in contexts where there is an object blocking AI's sight, preventing that it to stop moving, " +
-        "so the AI feel less dumb")]
+    "so the AI feel less dumb")]
     [SerializeField] float waitToLosePlayer;
+
+    [Tooltip("The time that takes the AI to return to it's patrol state after losing the player")]
+    [SerializeField] float waitPatrol;
+
+    [Tooltip("If on, always chases the player, no matter where it is. When off, uses the patrol behaviour")]
+    [SerializeField] bool alwaysKnow_WherePlayerIs;
+
+    [Tooltip("Transform that will have the same position of the player, when the player isn't in sight, this will be used to try to found player a little while. Requiered")]
+    [SerializeField] Transform lastPlayerPosition;
+
+
+    [Space]
+
+
+    [Header("Speed settings")]
+    [SerializeField] float patrolSpeed;
+
+    [SerializeField] float chasingSpeed;
+
+
+    [Space]
+
+
+    [Header("Attack settings")]
+
 
     [Tooltip("The distance from the player to start attacking it")]
     [SerializeField] float startAttackDistance;
@@ -47,11 +78,8 @@ public class Enemy_GunShooter : Enemy_Base
     [Tooltip("Delay between attacks")]
     [SerializeField] float attackDelay;
 
-    [Tooltip("The time that takes the AI to return to it's patrol state after losing the player")]
-    [SerializeField] float waitPatrol;
 
-    [Tooltip("If on, always chases the player, no matter where it is. When off, uses the patrol behaviour")]
-    [SerializeField] bool alwaysKnow_WherePlayerIs;
+    [Space]
 
 
     [Header("Sound & Particles settings")]
@@ -79,12 +107,6 @@ public class Enemy_GunShooter : Enemy_Base
 
     [Tooltip("Wait time to instantiate another particle and sound")]
     [SerializeField] float timeBetweenSteps;
-
-
-    [Header("Transform that will have the same position of the player, requiered")]
-
-
-    [SerializeField] Transform lastPlayerPosition;
 
     #endregion
 
@@ -239,7 +261,7 @@ public class Enemy_GunShooter : Enemy_Base
         {
             //Look forward
             RaycastHit hit;
-            if (Physics.SphereCast(lookPosition.position, lookingRadius, lookPosition.forward, out hit, lookingDistance))
+            if (Physics.SphereCast(lookPosition.position, lookingRadius, lookPosition.forward, out hit, lookingDistance, enemyDetectionMask))
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
@@ -270,7 +292,7 @@ public class Enemy_GunShooter : Enemy_Base
                     }
                 }
             }
-            else if (!Physics.SphereCast(lookPosition.position, lookingRadius, lookPosition.forward, out hit, lookingDistance))
+            else if (!Physics.SphereCast(lookPosition.position, lookingRadius, lookPosition.forward, out hit, lookingDistance, enemyDetectionMask))
             {
                 //Stop seeing the player (try to prevent a fake detection or continuous detection after stop seeing the player)
                 if (playerPosition != null)

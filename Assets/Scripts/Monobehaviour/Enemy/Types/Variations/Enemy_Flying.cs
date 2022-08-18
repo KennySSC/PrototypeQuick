@@ -21,6 +21,13 @@ public class Enemy_Flying : Enemy_Base
     [Tooltip("Turret pivot transform")]
     [SerializeField] Transform turret;
 
+
+    [Space]
+
+
+    [Header("Look and Detection Settings")]
+
+
     [Tooltip("AI eyes, forward direction of this object is where the AI will detect the player")]
     [SerializeField] Transform lookPosition;
 
@@ -29,11 +36,6 @@ public class Enemy_Flying : Enemy_Base
 
     [Tooltip("Layer where the player is, should be diferent from this gameobject to work correctly")]
     [SerializeField] LayerMask playerLayer;
-
-    [Header("Main settings")]
-    [SerializeField] float patrolSpeed;
-
-    [SerializeField] float chasingSpeed;
 
     [Tooltip("Max looking distance")]
     [SerializeField] float lookingDistance;
@@ -45,6 +47,30 @@ public class Enemy_Flying : Enemy_Base
         "so the AI feel less dumb")]
     [SerializeField] float waitToLosePlayer;
 
+    [Tooltip("The time that takes the AI to return to it's patrol state after losing the player")]
+    [SerializeField] float waitPatrol;
+
+    [Tooltip("If on, always chases the player, no matter where it is. When off, uses the patrol behaviour")]
+    [SerializeField] bool alwaysKnow_WherePlayerIs;
+
+    [Tooltip("Transform that will have the same position of the player, this will be used to search for the player even if it's not in sight, requiered")]
+    [SerializeField] Transform lastPlayerPosition;
+
+    [Space]
+
+
+    [Header("Speed Settings")]
+
+    [SerializeField] float patrolSpeed;
+
+    [SerializeField] float chasingSpeed;
+
+
+    [Space]
+
+
+    [Header("Attack Settings")]
+
     [Tooltip("The distance from the player to start attacking it")]
     [SerializeField] float startAttackDistance;
 
@@ -53,11 +79,6 @@ public class Enemy_Flying : Enemy_Base
 
     [SerializeField] int damage;
 
-    [Tooltip("The time that takes the AI to return to it's patrol state after losing the player")]
-    [SerializeField] float waitPatrol;
-
-    [Tooltip("If on, always chases the player, no matter where it is. When off, uses the patrol behaviour")]
-    [SerializeField] bool alwaysKnow_WherePlayerIs;
 
 
     [Header("Sound & Particles settings")]
@@ -77,12 +98,6 @@ public class Enemy_Flying : Enemy_Base
     [Tooltip("It will appear while shooting. If you don't want to use it, leave it empty")]
     [SerializeField] GameObject shotParticlePrefab;
 
-
-    [Header("Player position settings")]
-
-
-    [Tooltip("Transform that will have the same position of the player, requiered")]
-    [SerializeField] Transform lastPlayerPosition;
 
 
     #endregion

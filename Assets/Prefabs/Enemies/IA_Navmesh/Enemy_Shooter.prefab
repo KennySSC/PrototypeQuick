@@ -248,15 +248,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   lookPosition: {fileID: 7406071270528096183}
+  enemyDetectionMask:
+    serializedVersion: 2
+    m_Bits: 768
   playerYLook: {fileID: 6448647321743566093}
   patrolSpeed: 3
   chasingSpeed: 4
-  lookingDistance: 10
-  lookingRadius: 2
+  lookingDistance: 7
+  lookingRadius: 1.5
   waitToLosePlayer: 5
   startAttackDistance: 5
   attackDelay: 2
   waitPatrol: 4
+  alwaysKnow_WherePlayerIs: 0
   detectPlayerSound: {fileID: 6936309790172677222, guid: 147f5f5900e9e2344ab1f0ce9285dfe3, type: 3}
   returnPatrolSound: {fileID: 1727572115770892166, guid: 0e9414122f173944e91f7ed08e73244d, type: 3}
   randomSounds:
@@ -310,6 +314,7 @@ MonoBehaviour:
   currentGun: {fileID: 0}
   player: {fileID: 0}
   enemy: {fileID: 0}
+  shotPosition: {fileID: 0}
 --- !u!114 &3017468882661780332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +330,7 @@ MonoBehaviour:
   maxHealth: 50
   canReceiveDamage: 1
   destroyAfterDeath: 1
+  isPlayer: 0
   isBoss: 0
   vulnerablePiece: {fileID: 0}
   deadPieceMaterial: {fileID: 0}
@@ -364,6 +370,12 @@ MonoBehaviour:
   healingByTime: 1
   healingRate: 1
   waitTimeToHealing: 10
+  canRespawn: 0
+  respawnPosition: {fileID: 0}
+  respawnTime: 1
+  preRespawnEvents: []
+  respawnEvents: []
+  loseEvents: []
   dissolveDuration: 1
   deathAnimation_Time: 2
   shakeCamera: 0

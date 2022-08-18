@@ -369,16 +369,9 @@ public class Health : MonoBehaviour
                     {
                         enemy.ChangeIsAlive(false);
                     }
-                    //Triggers the respawn function
-                    if (isPlayer && canRespawn)
-                    {
+                    //Triggers the death
+                    StartCoroutine(StartDeath());
 
-                    }
-                    //Triggers death
-                    else
-                    {
-                        StartCoroutine(StartDeath());
-                    }
 
                 }
             }
@@ -532,22 +525,9 @@ public class Health : MonoBehaviour
     {
         isDying = true;
         //If has death event, do it
-        if(deathEvents!= null && deathEvents.Count>0 && !canRespawn)
+        if (preRespawnEvents != null && preRespawnEvents.Count > 0 && canRespawn && isPlayer)
         {
-            foreach(Event evt in deathEvents)
-            {
-                evt.DoEvent();
-                List<GameObject> obj = new List<GameObject>();
-                obj.Add(this.gameObject);
-                if(spawner != null)
-                {
-                    obj.Add(spawner.gameObject);
-                }
-                evt.GetObjects(obj);
-            }
-        }else if (preRespawnEvents != null && preRespawnEvents.Count > 0 && canRespawn)
-        {
-            if(GetComponent<PlayerMovement>()!= null)
+            if (GetComponent<PlayerMovement>() != null)
             {
                 GetComponent<PlayerMovement>().enabled = false;
             }
@@ -556,6 +536,21 @@ public class Health : MonoBehaviour
                 evt.DoEvent();
                 List<GameObject> obj = new List<GameObject>();
                 obj.Add(this.gameObject);
+                evt.GetObjects(obj);
+            }
+
+        }
+        else if (deathEvents != null && deathEvents.Count > 0)
+        {
+            foreach (Event evt in deathEvents)
+            {
+                evt.DoEvent();
+                List<GameObject> obj = new List<GameObject>();
+                obj.Add(this.gameObject);
+                if (spawner != null)
+                {
+                    obj.Add(spawner.gameObject);
+                }
                 evt.GetObjects(obj);
             }
         }
@@ -617,7 +612,7 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (canRespawn)
+        if (canRespawn && isPlayer)
         {
             if(respawnPosition != null)
             {
@@ -636,7 +631,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private IEnumerator ReapearAnimation()
+    private IEnumerator ReappearAnimation()
     {
         float elapsed = 0f;
         float dissolveFull = 1f;
@@ -670,9 +665,15 @@ public class Health : MonoBehaviour
                 mtl.SetFloat("_Dissolve", 1);
             }
         }
+        //Shows health bar if has one
+        if (healthBarCanvas != null && !healthBarCanvas.activeSelf)
+        {
+            healthBarCanvas.SetActive(true);
+        }
     }
     private IEnumerator RespawnAnimation_Events()
     {
+        isDying = false;
         if (respawnEvents != null && respawnEvents.Count > 0 && canRespawn)
         {
             foreach (Event evt in respawnEvents)
@@ -683,7 +684,7 @@ public class Health : MonoBehaviour
                 evt.GetObjects(obj);
             }
         }
-        StartCoroutine(ReapearAnimation());
+        StartCoroutine(ReappearAnimation());
         yield return new WaitForSeconds(respawnTime);
         GetHealing(999999);
         canReceiveDamage = true;

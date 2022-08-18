@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class IsoLook : BaseCameraMove
 {
+    //You can use this script with a raw image and a render texture in the UI
+
+    //For creating the mini map, use a raw image component and place it in your canvas. Then go to the project folders inside unity, right click and search for "RenderTexture" to create one
+    //When you select the render texture you can change it's size, it should match the RawImage size of the canvas. The camera component has a slot in the output menu labeled "Output Texture"
+    //you must drag the render texture there. Now, in the canvas raw image in the slot "Texture" you mus drag the render texture and it will work. 
     #region Serializable Variables
 
     [Tooltip("Game object with camera component")]
     [SerializeField] GameObject cam;
+
+    [Tooltip("The camera must be inside a empty GameObject for the camera shake to work properly. (If used for minimap you can set the camera object here)")]
     [SerializeField] GameObject cameraContainer;
 
-    [Tooltip("Player's body")]
+    [Tooltip("Player's body (needed)")]
     [SerializeField] Transform player;
 
-    [Tooltip("Object that the camera will follow")]
+    [Tooltip("Object that the camera will follow. (If used for a minimap, the player should be the target)")]
     [SerializeField] Transform target;
 
-    [Tooltip("Offset from the target to the camera position")]
+    [Tooltip("Offset from the target to the camera position (If used for minimap, the Y value is the aprox FOV in meters of the map")]
     [SerializeField] Vector3 offset;
 
-    [Tooltip("Smooth movement")]
+    [Tooltip("Smooth movement. If you put 0 the camera will not move. 1 Means no smoothing (1 is recommended for minimap)")]
     [SerializeField] float smooth;
 
-    [Tooltip("Turn on to hide mouse pointer and lock it")]
+    [Tooltip("Turn on to hide mouse pointer and lock it (False is recommended for minimap)")]
     [SerializeField] private bool lockMouse = true;
 
-    [Tooltip("Adds effects to the camera. If you don't need it leave it empty")]
+    [Tooltip("Adds effects to the camera. If you don't need it leave it empty (Leave it empty for minimap)")]
     [SerializeField] CameraFX cameraEffects;
 
     #endregion
@@ -34,10 +41,14 @@ public class IsoLook : BaseCameraMove
     private void Start()
     {
         //Unparents the camera from any parent
-        //Follows plater
-        cameraContainer.transform.LookAt(player);
+        //Follows player
+
         cameraContainer.transform.parent = null;
+        if (player != null)
+        {
+        cameraContainer.transform.LookAt(player);
         cameraContainer.transform.position = player.position;
+        }
     }
     private void Update()
     {

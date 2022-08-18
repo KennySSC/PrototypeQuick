@@ -1556,7 +1556,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751970672463506717}
-  m_LocalRotation: {x: -0.09788227, y: 0.05203269, z: 0.0051247305, w: 0.99382365}
+  m_LocalRotation: {x: -0.09788227, y: 0.052032743, z: 0.005124735, w: 0.99382365}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2923,7 +2923,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3431280105645922083}
-  m_LocalRotation: {x: -0.07983676, y: 0.052117113, z: 0.0041799396, w: 0.99543583}
+  m_LocalRotation: {x: -0.07983676, y: 0.052117128, z: 0.004179941, w: 0.99543583}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5102,7 +5102,7 @@ MonoBehaviour:
   maxHealth: 100
   canReceiveDamage: 1
   destroyAfterDeath: 0
-  isPlayer: 0
+  isPlayer: 1
   isBoss: 0
   vulnerablePiece: {fileID: 0}
   deadPieceMaterial: {fileID: 0}
@@ -5145,13 +5145,14 @@ MonoBehaviour:
   canRespawn: 0
   respawnPosition: {fileID: 0}
   respawnTime: 2.5
-  preRespawnEvents: []
+  preRespawnEvents:
+  - {fileID: 3407429024667382646}
   respawnEvents:
   - {fileID: 6476837072693707506}
   loseEvents:
   - {fileID: 6406137414641072449}
   dissolveDuration: 1
-  deathAnimation_Time: 1.5
+  deathAnimation_Time: 2
   shakeCamera: 0
   shakeMagnitude: 0
   shakeTime: 0
@@ -6494,8 +6495,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7019683089940189570}
-  m_LocalRotation: {x: -0.07868555, y: 0.052112952, z: 0.004118959, w: 0.995528}
-  m_LocalPosition: {x: -3.0000005, y: 0.088, z: 9}
+  m_LocalRotation: {x: -0.07983676, y: 0.052117135, z: 0.004179941, w: 0.99543583}
+  m_LocalPosition: {x: 0, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6713,7 +6714,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7056323230669911449}
-  m_LocalRotation: {x: -0.061717067, y: 0.052184552, z: 0.0032312653, w: 0.99672335}
+  m_LocalRotation: {x: -0.061717086, y: 0.052184533, z: 0.003231265, w: 0.99672335}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
