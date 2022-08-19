@@ -172,7 +172,7 @@ public class BaseGun : MonoBehaviour
     #region Main Functions
     private void Awake()
     {
-        //Gets all the renderer components in the object
+        //Gets all the renderer components in the object, used for dithering or scope aim to disable the gun, otherwhise it may block the view
         if(GetComponent<Renderer>()!= null)
         {
             Renderer[] tempRenderers = GetComponents<Renderer>();
@@ -209,6 +209,7 @@ public class BaseGun : MonoBehaviour
         }
         //Calculates the time for each reload cycle
         reloadIntervalsTime = reloadTime / ((magazineSize/bulletsAdd)+2);
+
         //Get father collider
         if(weaponController != null)
         {
@@ -222,7 +223,7 @@ public class BaseGun : MonoBehaviour
             gunAnimator.Play("Entry");
         }
 
-        //Obtains the recoil values for this weapon
+        //Obtains the recoil values for this weapon, given by the shot scriptable object
         if (shotType != null)
         {
             recoilAument = shotType.GetRecoilAument();
@@ -315,7 +316,8 @@ public class BaseGun : MonoBehaviour
                 isReloading = false;
                 reloadIntervalsTime = resetReloadTime;
                 shotType.DoShoot(shotSpawn, muzzleSpawn ,currentRecoil, damage, spawnObject);
-                //Instantiate the muzzle flash
+
+                //Instantiate the muzzle flash for non scope aim types (otherwhise it may block the player's view
 
                 if (aimType.GetAimType_Index() == 1 && isAiming)
                 {
@@ -353,6 +355,7 @@ public class BaseGun : MonoBehaviour
                     StartCoroutine(Spawn_ExtraShotSound());
                 }
                 currentBullets--;
+                //Adds the recoil and bullet deflection
                 if (isAiming)
                 {
                     currentRecoil += recoilAument_Aiming;
@@ -361,16 +364,18 @@ public class BaseGun : MonoBehaviour
                 {
                     currentRecoil += recoilAument;
                 }
-
+                //Updates the UI if it has one
                 if (ammo != null)
                 {
                     ammo.text = currentBullets.ToString() + "/" + inventoryAmmo.ToString();
                 }
+                // Limits the recoil
                 if (currentRecoil > maxRecoil)
                 {
                     currentRecoil = maxRecoil;
                 }
                 currentMaxRecoil = currentRecoil;
+                //Blocks the gun until the time between shots has finished
                 canShoot = false;
                 fingerUp = false;
                 if (currentBullets > 0)
@@ -400,11 +405,13 @@ public class BaseGun : MonoBehaviour
     {
         if(aimType!= null && (!isReloading_Full|| isReloading))
         {
+            //Applies aim animation
             isAiming = true;
             if(playerAnimator!= null)
             {
                 playerAnimator.SetBool("IsAiming", true);
             }
+            //Applies zoom
             if(weaponController.GetPlayerMovement().Get_ControllerType_Index() != 2)
             {
                 if (cam.GetComponent<CinemachineFreeLook>() != null)
@@ -425,11 +432,13 @@ public class BaseGun : MonoBehaviour
     {
         if(aimType != null)
         {
+            //Applies animation
             isAiming = false;
             if (playerAnimator != null)
             {
                 playerAnimator.SetBool("IsAiming", false);
             }
+            //Returns to the normal zoom
             if (weaponController.GetPlayerMovement().Get_ControllerType_Index() != 2)
             {
                 aimType.CancelAim(cam);
@@ -455,14 +464,17 @@ public class BaseGun : MonoBehaviour
         {
             int tempBullets = 0;
             int tempMagazine = magazineSize;
+            //If it's reloading and already has a bullet in the magazine, the player can shoot again
             if (currentBullets > 0)
             {
                 canShoot = true;
             }
+            //Adds one to the max gun capacity if the bool is turned on (only applies when the player reloads the gun when it has more than 0 bullets inside left)
             if (canPutChamberBullet)
             {
                 tempMagazine += 1;
             }
+            //This makes that only one sound spawns each time a bullet is inserted, otherwhise the sound will spam
             if(cnt_IdleReloadSound < 1)
             {
                 if(idleReloadSound != null)
@@ -472,43 +484,53 @@ public class BaseGun : MonoBehaviour
                 cnt_IdleReloadSound++;
             }
             reloadIntervalsTime -= Time.deltaTime;
+            //This verifies that another chunk of bullets can be added, a "BulletsAdd". This can be posible only if the player has bullets in its inventory
             if (reloadIntervalsTime <= 0 && currentBullets < tempMagazine)
             {
+                //Stops realoading if the player doen't have bullets in its inventory
                 if (inventoryAmmo <= 0)
                 {
                     isReloading = false;
                     return;
                 }
+                // If the player has less bullets in its inventory than the bullets add, all the remaining bullets are added and the inventory sets to 0
                 if (inventoryAmmo < bulletsAdd && inventoryAmmo > 0)
                 {
                     tempBullets = inventoryAmmo;
                     inventoryAmmo = 0;
                 }
+                //Normal reload cycle
                 else 
                 {
                     tempBullets = bulletsAdd;
                     inventoryAmmo -= bulletsAdd;
                 }
                 currentBullets += tempBullets;
+                //Prevent errors of adding more bullets than the weapon can take, and the extra are returned to the inventory
                 if (currentBullets >= tempMagazine)
                 {
                     int tempReturn = currentBullets - tempMagazine;
                     inventoryAmmo += tempReturn;
                     currentBullets = tempMagazine;
                     isReloading = false;
+                    //Updates the main inventory bullet count
                     weaponController.OnChangeAmmoValue(ammoType, inventoryAmmo);
+                    //Starts the reload finisher
                     StartCoroutine(FinishReload());
                     return;
+                    //Stops the reloading if the player doesn't have any remaining bullets (for the cycle to not repeat again)
                 }else if(currentBullets < tempMagazine && inventoryAmmo <= 0)
                 {
                     isReloading = false;
                     weaponController.OnChangeAmmoValue(ammoType, inventoryAmmo);
                     StartCoroutine(FinishReload());
                 }
+                //Updates UI
                 if (ammo != null)
                 {
                     ammo.text = currentBullets.ToString() + "/" + inventoryAmmo.ToString();
                 }
+                //Reset the cycle
                 weaponController.OnChangeAmmoValue(ammoType, inventoryAmmo);
                 cnt_IdleReloadSound = 0;
                 reloadIntervalsTime = resetReloadTime;
@@ -520,6 +542,7 @@ public class BaseGun : MonoBehaviour
     {
         if (calculateRecoil)
         {
+            //Substracts recoil while not shooting
             if(currentRecoil > 0)
             {
                 currentRecoil -= ((Time.deltaTime / timeToBaseRecoil) * currentMaxRecoil);
@@ -550,6 +573,7 @@ public class BaseGun : MonoBehaviour
     #region Get Set
     public void GetInventoryAmmo(int newammo)
     {
+        //Set the inventory ammo of the gun.
         inventoryAmmo = newammo;
         if (ammo != null)
         {
@@ -558,6 +582,7 @@ public class BaseGun : MonoBehaviour
     }
     public void GetCurrentBullets(int currentAmmo)
     {
+        //Set the current bullets inside the gun.
         currentBullets = currentAmmo;
         if(currentBullets > 0)
         {
@@ -591,8 +616,11 @@ public class BaseGun : MonoBehaviour
     }
     public void OnTakeNewGun(Transform shootPos, Transform objectSpawnPos, bool spawnObj)
     {
+        //Every gun needs a shotposition, but it depends on the camera type. FPS is recommended the camera, tps to. But top down for example requieres the gun's barrel or similar to shot
         shotSpawn = shootPos;
+        // The place where the bullet object (the one that is used for art, not damage) will appear
         objectSpawn = objectSpawnPos;
+        //A bool that sets if the bullet object will appear (False is recommended for fps unless you want to test)
         spawnObject = spawnObj;
 
         if(currentBullets <= 0)
@@ -669,6 +697,7 @@ public class BaseGun : MonoBehaviour
     #region Coroutines
     IEnumerator ShotWait()
     {
+        //The wait time to shot again, needed to not spam shots and make the gun empty it's bullets almost inmediatly.
         Debug.Log("Start shot wait");
         yield return new WaitForSeconds(timeBetweenShots);
         canShoot = true;
@@ -679,34 +708,41 @@ public class BaseGun : MonoBehaviour
         }
         Debug.Log("Finish shot wait");
     }
+    //If the gun can't shot while reloading, this coroutine is more performant than the update shot while reloading
     IEnumerator ReloadWeaponCompletely()
     {
         if (idleReloadSound != null)
         {
             StartCoroutine(Spawn_IdleReloadSound());
         }
+        //Waits to add a chunk of bullets (bullets add)
         yield return new WaitForSeconds(reloadIntervalsTime);
         int tempBullets = 0;
         int tempMagazine = magazineSize;
+        //Verifies if the gun can add one more bullet to it's capacity if the player reloaded while having more than 0 bullets in the gun
         if (canPutChamberBullet)
         {
             tempMagazine += 1;
         }
+        //If the player hasn't enough bullets in the inventory to fill the bullets add, it takes all the remaining bullets and sets the inventory to 0
         if (inventoryAmmo < bulletsAdd && inventoryAmmo > 0)
         {
             tempBullets = inventoryAmmo;
             inventoryAmmo = 0;
         }
+        //Normal reload cycle
         else
         {
             tempBullets = bulletsAdd;
             inventoryAmmo -= bulletsAdd;
         }
         currentBullets += tempBullets;
+        //Updates UI
         if (ammo != null)
         {
             ammo.text = currentBullets.ToString() + "/" + inventoryAmmo.ToString();
         }
+        //Prevents that the gun's magazine have more bullets than the max capacity, and returns the surplus to the inventory
         if (currentBullets >= tempMagazine)
         {
             int tempReturn = currentBullets - tempMagazine;
@@ -718,11 +754,12 @@ public class BaseGun : MonoBehaviour
                 currentBullets -= backReturn;
                 inventoryAmmo = 0;
             }
+            //Updates UI
             if (ammo != null)
             {
                 ammo.text = currentBullets.ToString() + "/" + inventoryAmmo.ToString();
             }
-            
+            //Start the finishing reload animation
             weaponController.OnChangeAmmoValue(ammoType, inventoryAmmo);
             StartCoroutine(FinishReload());
             yield break;
@@ -735,6 +772,7 @@ public class BaseGun : MonoBehaviour
     }
     IEnumerator StartReload()
     {
+        //Applies animation
         isReloading = true;
         if (!shootWhileReload)
         {
@@ -761,6 +799,7 @@ public class BaseGun : MonoBehaviour
             }
             playerAnimator.SetFloat("Reload_SpeedMultiplier", (1/resetReloadTime));
         }
+        //verifies if the gun can have a extra bullet in this reload
         if (currentBullets > 0 && chamberBullet)
         {
             canPutChamberBullet = true;
@@ -769,6 +808,7 @@ public class BaseGun : MonoBehaviour
         {
             canPutChamberBullet = false;
         }
+        //Shows on the 3D Model the magbullet object if it has one and you want this detail (only when the mag has remaining bullets)
         if (currentBullets > 0)
         {
             if (magBullet != null && !magBullet.activeSelf)
@@ -776,6 +816,7 @@ public class BaseGun : MonoBehaviour
                 magBullet.SetActive(true);
             }
         }
+        //Hides the 3D model of the mag bullet
         else
         {
             if (magBullet != null && magBullet.activeSelf)
@@ -799,6 +840,7 @@ public class BaseGun : MonoBehaviour
     }
     IEnumerator FinishReload()
     {
+        //Finish reload animations
         if (gunAnimator != null)
         {
             gunAnimator.SetFloat("Reload_SpeedMultiplier", (1 / resetReloadTime));
@@ -823,7 +865,7 @@ public class BaseGun : MonoBehaviour
             playerAnimator.SetBool("FinishReload", true);
             playerAnimator.SetFloat("Reload_SpeedMultiplier", (1 / resetReloadTime));
         }
-
+        //Allows to shot again
         StartCoroutine(AnimationReloadReset());
         isReloading_Full = false;
         fingerUp = true;
@@ -833,6 +875,7 @@ public class BaseGun : MonoBehaviour
         {
             weaponController.FinishingReload();
         }
+        //Updates UI
         if (ammo != null)
         {
             ammo.text = currentBullets.ToString() + "/" + inventoryAmmo.ToString();
@@ -863,6 +906,8 @@ public class BaseGun : MonoBehaviour
             muzzleLight.SetActive(false);
         }
     }
+
+    //Sound sync coroutines
     IEnumerator Spawn_ExtraShotSound()
     {
         yield return new WaitForSeconds(shotExtraSound_WaitTime);
