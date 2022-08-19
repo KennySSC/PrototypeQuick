@@ -8,7 +8,8 @@ public class IsoLook : BaseCameraMove
 
     //For creating the mini map, use a raw image component and place it in your canvas. Then go to the project folders inside unity, right click and search for "RenderTexture" to create one
     //When you select the render texture you can change it's size, it should match the RawImage size of the canvas. The camera component has a slot in the output menu labeled "Output Texture"
-    //you must drag the render texture there. Now, in the canvas raw image in the slot "Texture" you mus drag the render texture and it will work. 
+    //you must drag the render texture there. Now, in the canvas raw image in the slot "Texture" you mus drag the render.
+    //In the test, the minimap only worked by setting the camera component, environment tab in "solid color", otherwhise it only renders UI and particle elements.
     #region Serializable Variables
 
     [Tooltip("Game object with camera component")]
