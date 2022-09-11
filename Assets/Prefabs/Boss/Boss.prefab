@@ -377,7 +377,7 @@ Transform:
   - {fileID: 3684552977182253411}
   - {fileID: 2005927657060489965}
   m_Father: {fileID: 7745367872223059894}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5867285095300853998
 MonoBehaviour:
@@ -519,14 +519,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007036433103796793}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.001, y: 0.243, z: -0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.387, y: 0.032, z: 0.547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7773994420169822201}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: -180, z: 180}
+  m_Father: {fileID: 7745367872223059894}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055744556190826910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1147,7 @@ MonoBehaviour:
   maxHealth: 250
   canReceiveDamage: 1
   destroyAfterDeath: 1
+  isPlayer: 0
   isBoss: 1
   vulnerablePiece: {fileID: 910512866226273929}
   deadPieceMaterial: {fileID: 2100000, guid: fb78c26f738bb9c4b927b52458cbebba, type: 2}
@@ -1186,6 +1187,12 @@ MonoBehaviour:
   healingByTime: 0
   healingRate: 0
   waitTimeToHealing: 0
+  canRespawn: 0
+  respawnPosition: {fileID: 0}
+  respawnTime: 1
+  preRespawnEvents: []
+  respawnEvents: []
+  loseEvents: []
   dissolveDuration: 1
   deathAnimation_Time: 2
   shakeCamera: 0
@@ -2007,7 +2014,7 @@ Transform:
   - {fileID: 1525642399143339159}
   - {fileID: 1452033313371211936}
   m_Father: {fileID: 7745367872223059894}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4936795074849704553
 GameObject:
@@ -2189,6 +2196,7 @@ MonoBehaviour:
   maxHealth: 250
   canReceiveDamage: 1
   destroyAfterDeath: 1
+  isPlayer: 0
   isBoss: 1
   vulnerablePiece: {fileID: 6263362647787764845}
   deadPieceMaterial: {fileID: 2100000, guid: e5b8d7b80de64f04dbb738ade6e08abd, type: 2}
@@ -2228,6 +2236,12 @@ MonoBehaviour:
   healingByTime: 0
   healingRate: 0
   waitTimeToHealing: 0
+  canRespawn: 0
+  respawnPosition: {fileID: 0}
+  respawnTime: 1
+  preRespawnEvents: []
+  respawnEvents: []
+  loseEvents: []
   dissolveDuration: 1
   deathAnimation_Time: 2
   shakeCamera: 0
@@ -2614,6 +2628,7 @@ MonoBehaviour:
   maxHealth: 250
   canReceiveDamage: 1
   destroyAfterDeath: 1
+  isPlayer: 0
   isBoss: 1
   vulnerablePiece: {fileID: 6091858252404123059}
   deadPieceMaterial: {fileID: 2100000, guid: fb78c26f738bb9c4b927b52458cbebba, type: 2}
@@ -2653,6 +2668,12 @@ MonoBehaviour:
   healingByTime: 0
   healingRate: 0
   waitTimeToHealing: 0
+  canRespawn: 0
+  respawnPosition: {fileID: 0}
+  respawnTime: 1
+  preRespawnEvents: []
+  respawnEvents: []
+  loseEvents: []
   dissolveDuration: 1
   deathAnimation_Time: 2
   shakeCamera: 0
@@ -2765,6 +2786,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7362253648270318118}
+  - {fileID: 3340621878388214513}
   - {fileID: 3498323116363544580}
   - {fileID: 6496643601690208661}
   - {fileID: 152603446335634608}
@@ -3532,8 +3554,7 @@ Transform:
   m_LocalPosition: {x: 2.0816682e-17, y: 0.31686231, z: 1.6653345e-16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3340621878388214513}
+  m_Children: []
   m_Father: {fileID: 7898240141703212591}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3598,6 +3619,7 @@ MonoBehaviour:
   maxHealth: 250
   canReceiveDamage: 1
   destroyAfterDeath: 1
+  isPlayer: 0
   isBoss: 1
   vulnerablePiece: {fileID: 8113931482564814781}
   deadPieceMaterial: {fileID: 2100000, guid: e5b8d7b80de64f04dbb738ade6e08abd, type: 2}
@@ -3637,6 +3659,12 @@ MonoBehaviour:
   healingByTime: 0
   healingRate: 0
   waitTimeToHealing: 0
+  canRespawn: 0
+  respawnPosition: {fileID: 0}
+  respawnTime: 1
+  preRespawnEvents: []
+  respawnEvents: []
+  loseEvents: []
   dissolveDuration: 1
   deathAnimation_Time: 2
   shakeCamera: 0
@@ -3747,7 +3775,7 @@ Transform:
   - {fileID: 2990858358420436806}
   - {fileID: 3276191956814635604}
   m_Father: {fileID: 7745367872223059894}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9165913113739101781
 GameObject:

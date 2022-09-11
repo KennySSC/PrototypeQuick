@@ -529,6 +529,8 @@ public class Health : MonoBehaviour
         {
             if (GetComponent<PlayerMovement>() != null)
             {
+                GetComponent<PlayerMovement>().GetMovement().ChangeRun(false);
+                GetComponent<PlayerMovement>().GetMovement().ChangeAiming(false);
                 GetComponent<PlayerMovement>().enabled = false;
             }
             foreach (Event evt in preRespawnEvents)

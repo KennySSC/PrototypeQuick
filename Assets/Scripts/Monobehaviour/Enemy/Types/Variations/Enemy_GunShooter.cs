@@ -117,7 +117,7 @@ public class Enemy_GunShooter : Enemy_Base
 
     private bool calculateSteps = false;
     private bool hasGun = false;
-    private bool isFollowPlayer = false;
+    [SerializeField]private bool isFollowPlayer = false;
     private bool isAlive = true;
     private bool isJumping = false;
     private bool isGrounded;

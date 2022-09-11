@@ -326,6 +326,8 @@ public class Boss_Controller : MonoBehaviour
     }
     private void FacePlayer()
     {
+        Vector3 lookPlayer = new Vector3(player.position.x, player.position.y, bulletSpawn.position.z);
+        bulletSpawn.LookAt(lookPlayer);
         //See the player
         Vector3 lookPos = player.position - transform.position;
         lookPos.y = 0;
@@ -487,7 +489,7 @@ public class Boss_Controller : MonoBehaviour
             {
                 GameObject tempBullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
                 float tempRotation = (bulletSpawn.transform.localEulerAngles.y + (((180 / bulletsCount) * i) -90));
-                tempBullet.transform.eulerAngles = new Vector3(tempBullet.transform.localEulerAngles.x, tempBullet.transform.localEulerAngles.y + tempRotation, tempBullet.transform.localEulerAngles.z);
+                tempBullet.transform.localEulerAngles = new Vector3(tempBullet.transform.localEulerAngles.x, tempBullet.transform.localEulerAngles.y + tempRotation, tempBullet.transform.localEulerAngles.z);
                 tempBullet.GetComponent<Boss_Shot>().SetValues(bulletSpeed, bulletRadius, bulletsDamage);
             }
         }

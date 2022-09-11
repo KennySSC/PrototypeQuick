@@ -793,6 +793,7 @@ MonoBehaviour:
   idleReloadSound_WaitTime: 0.3
   finishReloadSound: {fileID: 5303180305976407326, guid: ff48eec2b0ca6604fad5eea27dc48af7, type: 3}
   finishReloadSound_WaitTime: 0.3
+  shotSpawn: {fileID: 0}
 --- !u!95 &6458261872346887175
 Animator:
   serializedVersion: 4
